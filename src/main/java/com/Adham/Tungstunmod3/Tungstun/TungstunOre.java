@@ -14,10 +14,10 @@ public class TungstunOre {
     // Most of the time ---> public static final
 
     public static final RegistryObject<Item> Tungstun =
-            ITEMS.register("tungstun", () -> new Item(new Item.Properties()));
+            ITEMS.register("tungstun", () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> RawTungstun =
-            ITEMS.register("rawtungstun", () -> new Item(new Item.Properties()));
+            ITEMS.register("rawtungstun", () -> new Item(new Item.Properties().fireResistant()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

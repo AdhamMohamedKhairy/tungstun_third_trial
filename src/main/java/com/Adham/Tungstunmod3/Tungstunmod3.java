@@ -1,6 +1,7 @@
 package com.Adham.Tungstunmod3;
 
 import com.Adham.Tungstunmod3.Tungstun.TungstunOre;
+import com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -47,6 +48,7 @@ public class Tungstunmod3
         modEventBus.addListener(this::commonSetup);
 
         TungstunOre.register(modEventBus);
+        TungstunBlock.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -76,9 +78,10 @@ public class Tungstunmod3
     {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(TungstunOre.Tungstun);
-        }
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
             event.accept(TungstunOre.RawTungstun);
+        }
+        if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(TungstunBlock.TungstunBlock);
         }
     }
 
