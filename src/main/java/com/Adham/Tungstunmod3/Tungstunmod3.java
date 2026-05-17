@@ -1,5 +1,6 @@
 package com.Adham.Tungstunmod3;
 
+import com.Adham.Tungstunmod3.Tungstun.TungstunOre;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -29,22 +30,23 @@ import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-IoulnNF/mods.toml file
-@Mod(ExampleMod.MOD_ID)
-public class ExampleMod
+@Mod(Tungstunmod3.MOD_ID)
+public class Tungstunmod3
 {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "tungstunmod";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
-    public ExampleMod(FMLJavaModLoadingContext context)
+    public Tungstunmod3(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        TungstunOre.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -72,7 +74,12 @@ public class ExampleMod
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(TungstunOre.Tungstun);
+        }
+        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(TungstunOre.RawTungstun);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
