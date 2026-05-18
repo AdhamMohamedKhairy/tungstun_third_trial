@@ -18,10 +18,10 @@ public class TungstunBlock {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Tungstunmod3.MOD_ID);
 
-    public static final RegistryObject<Block> TungstunBlock =
+    public static final RegistryObject<Block> TungstunBlocko =
             registerBlock("tungstunblock", () ->
                     new Block(BlockBehaviour.Properties.of()
-                            .strength(60.0f,2000f)
+                            .strength(50.0f,2000f)
                             .requiresCorrectToolForDrops()
                             .sound(SoundType.DEEPSLATE_BRICKS)));
 

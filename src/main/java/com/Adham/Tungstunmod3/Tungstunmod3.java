@@ -1,5 +1,6 @@
 package com.Adham.Tungstunmod3;
 
+import com.Adham.Tungstunmod3.Tungstun.TungstunCreativeMode;
 import com.Adham.Tungstunmod3.Tungstun.TungstunOre;
 import com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock;
 import com.mojang.logging.LogUtils;
@@ -47,6 +48,8 @@ public class Tungstunmod3
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        TungstunCreativeMode.register(modEventBus);
+
         TungstunOre.register(modEventBus);
         TungstunBlock.register(modEventBus);
 
@@ -81,7 +84,7 @@ public class Tungstunmod3
             event.accept(TungstunOre.RawTungstun);
         }
         if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
-            event.accept(TungstunBlock.TungstunBlock);
+            event.accept(TungstunBlock.TungstunBlocko);
         }
     }
 

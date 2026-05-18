@@ -1,5 +1,6 @@
 {
   "item.tungstunmod.tungstun" : "Tungsten Ingot",
   "item.tungstunmod.rawtungstun" : "Raw Tungsten",
-  "block.tungstunmod.tungstunblock": "Block Of Tungsten"
+  "block.tungstunmod.tungstunblock": "Block Of Tungsten",
+  "creativetab.tungstunmod.tungstun_items": "Tungsten"
 }
