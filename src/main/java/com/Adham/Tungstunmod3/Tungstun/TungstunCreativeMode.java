@@ -12,6 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock.TungstunBlocko;
+import static com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock.TungstunOree;
 
 public class TungstunCreativeMode {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
@@ -25,6 +26,7 @@ public class TungstunCreativeMode {
                         output.accept(TungstunOre.Tungstun.get());
                         output.accept(TungstunOre.RawTungstun.get());
                         output.accept(TungstunBlocko.get());
+                        output.accept(TungstunOree.get());
                     }).build());
 
     public static void register(IEventBus eventBus){
