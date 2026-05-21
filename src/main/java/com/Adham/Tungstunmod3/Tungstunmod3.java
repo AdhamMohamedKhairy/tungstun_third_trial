@@ -89,6 +89,9 @@ public class Tungstunmod3
         if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
             event.accept(TungstunBlock.TungstunOree);
         }
+        if(event.getTabKey() == CreativeModeTabs.COMBAT){
+            event.accept(TungstunOre.Tungstun_Mace);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

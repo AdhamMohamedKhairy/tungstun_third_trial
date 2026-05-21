@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tungstun",
+  "key":{
+    "A": {
+      "item": "tungstunmod:tungstun"
+    },
+    "M": {
+      "item": "minecraft:mace"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AMA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tungstunmod:tungstunmace"
+  }
+}

@@ -25,6 +25,7 @@ public class TungstunCreativeMode {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(TungstunOre.Tungstun.get());
                         output.accept(TungstunOre.RawTungstun.get());
+                        output.accept(TungstunOre.Tungstun_Mace.get());
                         output.accept(TungstunBlocko.get());
                         output.accept(TungstunOree.get());
                     }).build());

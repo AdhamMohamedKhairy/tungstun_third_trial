@@ -3,5 +3,6 @@
   "item.tungstunmod.rawtungstun" : "Raw Tungsten",
   "block.tungstunmod.tungstunblock": "Block Of Tungsten",
   "block.tungstunmod.tungstunore": "Deeepslate Tungsten",
-  "creativetab.tungstunmod.tungstun_items": "Tungsten"
+  "creativetab.tungstunmod.tungstun_items": "Tungsten",
+  "item.tungstunmod.tungstunmace" : "Reinforced Mace"
 }

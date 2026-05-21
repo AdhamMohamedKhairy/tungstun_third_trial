@@ -1,5 +1,6 @@
 package com.Adham.Tungstunmod3.Tungstun;
 
+import com.Adham.Tungstunmod3.Tungstun.custom.TungstunMace;
 import com.Adham.Tungstunmod3.Tungstunmod3;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +19,9 @@ public class TungstunOre {
 
     public static final RegistryObject<Item> RawTungstun =
             ITEMS.register("rawtungstun", () -> new Item(new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> Tungstun_Mace =
+            ITEMS.register("tungstunmace", () -> new TungstunMace(new Item.Properties().fireResistant().durability(600).attributes(TungstunMace.createAttributes())));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
