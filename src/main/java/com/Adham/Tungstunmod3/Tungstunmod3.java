@@ -92,6 +92,9 @@ public class Tungstunmod3
         if(event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(TungstunOre.Tungstun_Mace);
         }
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+            event.accept(TungstunOre.TungstunBatatis);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

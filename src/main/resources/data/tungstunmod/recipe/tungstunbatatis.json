@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tungstun",
+  "key":{
+    "A": {
+      "item": "tungstunmod:tungstunblock"
+    },
+    "B": {
+      "item": "minecraft:potato"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tungstunmod:tungstunbatatis"
+  }
+}

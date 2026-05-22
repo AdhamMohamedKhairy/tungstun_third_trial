@@ -23,6 +23,9 @@ public class TungstunOre {
     public static final RegistryObject<Item> Tungstun_Mace =
             ITEMS.register("tungstunmace", () -> new TungstunMace(new Item.Properties().fireResistant().durability(600).attributes(TungstunMace.createAttributes())));
 
+    public static final RegistryObject<Item> TungstunBatatis =
+            ITEMS.register("tungstunbatatis", () -> new Item(new Item.Properties().food(TungstunFoodProperties.Tungstun_Batatis).fireResistant()));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

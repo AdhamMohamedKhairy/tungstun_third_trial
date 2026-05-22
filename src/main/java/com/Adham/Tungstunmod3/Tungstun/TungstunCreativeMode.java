@@ -28,6 +28,7 @@ public class TungstunCreativeMode {
                         output.accept(TungstunOre.Tungstun_Mace.get());
                         output.accept(TungstunBlocko.get());
                         output.accept(TungstunOree.get());
+                        output.accept(TungstunOre.TungstunBatatis.get());
                     }).build());
 
     public static void register(IEventBus eventBus){
