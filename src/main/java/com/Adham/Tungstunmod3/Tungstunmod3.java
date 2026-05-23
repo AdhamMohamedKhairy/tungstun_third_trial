@@ -3,8 +3,11 @@ package com.Adham.Tungstunmod3;
 import com.Adham.Tungstunmod3.Tungstun.TungstunCreativeMode;
 import com.Adham.Tungstunmod3.Tungstun.TungstunOre;
 import com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock;
+import com.Adham.Tungstunmod3.TungstunEntities.TungstunEntities;
+import com.Adham.Tungstunmod3.TungstunEntities.custom.HotPotato;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -16,6 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -49,6 +53,8 @@ public class Tungstunmod3
         modEventBus.addListener(this::commonSetup);
 
         TungstunCreativeMode.register(modEventBus);
+
+        TungstunEntities.register(modEventBus);
 
         TungstunOre.register(modEventBus);
         TungstunBlock.register(modEventBus);
@@ -91,6 +97,7 @@ public class Tungstunmod3
         }
         if(event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(TungstunOre.Tungstun_Mace);
+            event.accept(TungstunOre.HOT_POTATO);
         }
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(TungstunOre.TungstunBatatis);
@@ -112,6 +119,12 @@ public class Tungstunmod3
         public static void onClientSetup(FMLClientSetupEvent event)
         {
 
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
+            event.registerEntityRenderer(TungstunEntities.HOT_POTATO.get(),
+                    pContext -> new ThrownItemRenderer<HotPotato>(pContext, 1.0f, true));
         }
     }
 }

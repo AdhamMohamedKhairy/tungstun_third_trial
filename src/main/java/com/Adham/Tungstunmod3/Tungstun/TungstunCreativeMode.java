@@ -29,6 +29,7 @@ public class TungstunCreativeMode {
                         output.accept(TungstunBlocko.get());
                         output.accept(TungstunOree.get());
                         output.accept(TungstunOre.TungstunBatatis.get());
+                        output.accept(TungstunOre.HOT_POTATO.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

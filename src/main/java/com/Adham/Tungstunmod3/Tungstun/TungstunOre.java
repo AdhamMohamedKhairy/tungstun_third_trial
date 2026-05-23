@@ -1,5 +1,6 @@
 package com.Adham.Tungstunmod3.Tungstun;
 
+import com.Adham.Tungstunmod3.Tungstun.custom.HotPotatoItem;
 import com.Adham.Tungstunmod3.Tungstun.custom.TungstunMace;
 import com.Adham.Tungstunmod3.Tungstunmod3;
 import net.minecraft.world.item.Item;
@@ -25,6 +26,13 @@ public class TungstunOre {
 
     public static final RegistryObject<Item> TungstunBatatis =
             ITEMS.register("tungstunbatatis", () -> new Item(new Item.Properties().food(TungstunFoodProperties.Tungstun_Batatis).fireResistant()));
+
+    public static final RegistryObject<Item> HOT_POTATO =
+            ITEMS.register("hotpotato", () -> new HotPotatoItem(
+                    new Item.Properties()
+                            .stacksTo(16)
+                            .fireResistant()
+            ));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
