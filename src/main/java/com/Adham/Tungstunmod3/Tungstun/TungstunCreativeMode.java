@@ -30,6 +30,14 @@ public class TungstunCreativeMode {
                         output.accept(TungstunOree.get());
                         output.accept(TungstunOre.TungstunBatatis.get());
                         output.accept(TungstunOre.HOT_POTATO.get());
+                        output.accept(TungstunOre.TUNGSTUN_BOOTS.get());
+                        output.accept(TungstunOre.TUNGSTUN_CHESTPLATE.get());
+                        output.accept(TungstunOre.TUNGSTUN_HELMET.get());
+                        output.accept(TungstunOre.TUNGSTUN_LEGGINGS.get());
+                        output.accept(TungstunOre.CRY_BOOTS.get());
+                        output.accept(TungstunOre.CRY_CHESTPLATE.get());
+                        output.accept(TungstunOre.CRY_HELMET.get());
+                        output.accept(TungstunOre.CRY_LEGGINGS.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

@@ -9,6 +9,9 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,6 +37,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import net.minecraftforge.event.TickEvent;
 
 // The value here should match an entry in the META-IoulnNF/mods.toml file
 @Mod(Tungstunmod3.MOD_ID)
@@ -98,6 +102,10 @@ public class Tungstunmod3
         if(event.getTabKey() == CreativeModeTabs.COMBAT){
             event.accept(TungstunOre.Tungstun_Mace);
             event.accept(TungstunOre.HOT_POTATO);
+            event.accept(TungstunOre.TUNGSTUN_BOOTS.get());
+            event.accept(TungstunOre.TUNGSTUN_CHESTPLATE.get());
+            event.accept(TungstunOre.TUNGSTUN_HELMET.get());
+            event.accept(TungstunOre.TUNGSTUN_LEGGINGS.get());
         }
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(TungstunOre.TungstunBatatis);
@@ -125,6 +133,36 @@ public class Tungstunmod3
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
             event.registerEntityRenderer(TungstunEntities.HOT_POTATO.get(),
                     pContext -> new ThrownItemRenderer<HotPotato>(pContext, 1.0f, true));
+        }
+    }
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ServerModEvents{
+        @SubscribeEvent
+        public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+            if (event.phase == TickEvent.Phase.END) {
+               net.minecraft.world.entity.player.Player player = event.player;
+
+                boolean helmetOn =  player.getItemBySlot(EquipmentSlot.HEAD).is(TungstunOre.TUNGSTUN_HELMET.get()) ||
+                        player.getItemBySlot(EquipmentSlot.HEAD).is(TungstunOre.CRY_HELMET.get());
+
+                boolean chestOn =  player.getItemBySlot(EquipmentSlot.CHEST).is(TungstunOre.TUNGSTUN_CHESTPLATE.get()) ||
+                        player.getItemBySlot(EquipmentSlot.CHEST).is(TungstunOre.CRY_CHESTPLATE.get());
+
+                boolean legOn =  player.getItemBySlot(EquipmentSlot.LEGS).is(TungstunOre.TUNGSTUN_LEGGINGS.get()) ||
+                        player.getItemBySlot(EquipmentSlot.LEGS).is(TungstunOre.CRY_LEGGINGS.get());
+
+                boolean bootsOn =  player.getItemBySlot(EquipmentSlot.FEET).is(TungstunOre.TUNGSTUN_BOOTS.get()) ||
+                        player.getItemBySlot(EquipmentSlot.FEET).is(TungstunOre.CRY_BOOTS.get());
+
+                if (helmetOn && chestOn && legOn && bootsOn){
+                    player.addEffect(new MobEffectInstance(
+                            MobEffects.DAMAGE_RESISTANCE, 40, 1,false,false
+                    ));
+                    player.addEffect(new MobEffectInstance(
+                            MobEffects.FIRE_RESISTANCE, 40, 0,false,false
+                    ));
+                }
+            }
         }
     }
 }

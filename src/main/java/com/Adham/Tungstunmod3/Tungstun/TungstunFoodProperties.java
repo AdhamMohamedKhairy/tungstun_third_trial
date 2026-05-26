@@ -12,10 +12,10 @@ public class TungstunFoodProperties {
                     .effect(new MobEffectInstance(MobEffects.ABSORPTION, 6000, 2), 1.0f)
                     .effect(new MobEffectInstance(MobEffects.REGENERATION, 6000, 2), 1.0f)
                     .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 6000, 2), 1.0f)
-                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 6000, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 2), 1.0f)
                     .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 2), 1.0f)
                     .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 2), 1.0f)
-                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 100,3), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 200,3), 1.0f)
                     .alwaysEdible()
                     .build();
 }

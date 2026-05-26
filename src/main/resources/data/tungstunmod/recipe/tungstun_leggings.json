@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "TTT",
+    "TCT",
+    "TTT"
+  ],
+  "key": {
+    "T": { "item": "tungstunmod:tungstun" },
+    "C": { "item": "tungstunmod:crystallized_netherite_leggings" }
+  },
+  "result": {
+    "id": "tungstunmod:tungstun_leggings",
+    "count": 1
+  }
+}
