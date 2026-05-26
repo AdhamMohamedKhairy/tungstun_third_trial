@@ -106,9 +106,21 @@ public class Tungstunmod3
             event.accept(TungstunOre.TUNGSTUN_CHESTPLATE.get());
             event.accept(TungstunOre.TUNGSTUN_HELMET.get());
             event.accept(TungstunOre.TUNGSTUN_LEGGINGS.get());
+            event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_SWORD.get());
+            event.accept(TungstunOre.TUNGSTUN_SWORD.get());
         }
         if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
             event.accept(TungstunOre.TungstunBatatis);
+        }
+        if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+            event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_HOE.get());
+            event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_SHOVEL.get());
+            event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_AXE.get());
+            event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_PICKAXE.get());
+            event.accept(TungstunOre.TUNGSTUN_HOE.get());
+            event.accept(TungstunOre.TUNGSTUN_SHOVEL.get());
+            event.accept(TungstunOre.TUNGSTUN_AXE.get());
+            event.accept(TungstunOre.TUNGSTUN_PICKAXE.get());
         }
     }
 

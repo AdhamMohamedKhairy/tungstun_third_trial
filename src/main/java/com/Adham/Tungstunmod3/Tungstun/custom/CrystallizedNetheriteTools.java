@@ -12,7 +12,7 @@ public enum CrystallizedNetheriteTools implements Tier {
 
     @Override
     public int getUses() {
-        return 2301;
+        return 2500;
     }
 
     @Override

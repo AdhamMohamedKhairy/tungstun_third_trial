@@ -38,6 +38,16 @@ public class TungstunCreativeMode {
                         output.accept(TungstunOre.CRY_CHESTPLATE.get());
                         output.accept(TungstunOre.CRY_HELMET.get());
                         output.accept(TungstunOre.CRY_LEGGINGS.get());
+                        output.accept(TungstunOre.CRYSTALLIZED_NETHERITE_HOE.get());
+                        output.accept(TungstunOre.CRYSTALLIZED_NETHERITE_SHOVEL.get());
+                        output.accept(TungstunOre.CRYSTALLIZED_NETHERITE_SWORD.get());
+                        output.accept(TungstunOre.CRYSTALLIZED_NETHERITE_AXE.get());
+                        output.accept(TungstunOre.CRYSTALLIZED_NETHERITE_PICKAXE.get());
+                        output.accept(TungstunOre.TUNGSTUN_HOE.get());
+                        output.accept(TungstunOre.TUNGSTUN_SHOVEL.get());
+                        output.accept(TungstunOre.TUNGSTUN_SWORD.get());
+                        output.accept(TungstunOre.TUNGSTUN_AXE.get());
+                        output.accept(TungstunOre.TUNGSTUN_PICKAXE.get());
                     }).build());
 
     public static void register(IEventBus eventBus){

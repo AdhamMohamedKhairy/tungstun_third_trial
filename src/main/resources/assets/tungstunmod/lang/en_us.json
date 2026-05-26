@@ -15,5 +15,15 @@
   "item.tungstunmod.crystallized_netherite_leggings": "Crystallized Netherite Leggings",
   "item.tungstunmod.crystallized_netherite_boots": "Crystallized Netherite Boots",
   "item.tungstunmod.hotpotato": "Hot Potato",
-  "entity.tungstunmod.hotpotato": "Hot Potato"
+  "entity.tungstunmod.hotpotato": "Hot Potato",
+  "item.tungstunmod.tungstun_sword": "Tungsten Sword",
+  "item.tungstunmod.tungstun_pickaxe": "Tungsten Pickaxe",
+  "item.tungstunmod.tungstun_axe": "Tungsten Axe",
+  "item.tungstunmod.tungstun_shovel": "Tungsten Shovel",
+  "item.tungstunmod.tungstun_hoe": "Tungsten Hoe",
+  "item.tungstunmod.crystallized_netherite_sword": "Crystallized Netherite Sword",
+  "item.tungstunmod.crystallized_netherite_pickaxe": "Crystallized Netherite Pickaxe",
+  "item.tungstunmod.crystallized_netherite_axe": "Crystallized Netherite Axe",
+  "item.tungstunmod.crystallized_netherite_shovel": "Crystallized Netherite Shovel",
+  "item.tungstunmod.crystallized_netherite_hoe": "Crystallized Netherite Hoe"
 }
