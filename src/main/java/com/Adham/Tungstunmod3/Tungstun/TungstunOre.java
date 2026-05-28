@@ -187,6 +187,13 @@ public class TungstunOre {
                             .attributes(HoeItem.createAttributes(CrystallizedNetheriteTools.CRYSTALLIZED_NETHERITE, 3, -2.4F))
             ));
 
+    public static final RegistryObject<Item> TUNGSTUN_DRILL =
+            ITEMS.register("tungstun_drill", () -> new TungstunDrill(
+                   TungstunTools.TUNGSTUN, new Item.Properties()
+                    .fireResistant().durability(5000)
+                    .attributes(PickaxeItem.createAttributes(TungstunTools.TUNGSTUN, 6, -4.0F))
+            ));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

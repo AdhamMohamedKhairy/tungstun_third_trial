@@ -2,6 +2,7 @@ package com.Adham.Tungstunmod3;
 
 import com.Adham.Tungstunmod3.Tungstun.TungstunCreativeMode;
 import com.Adham.Tungstunmod3.Tungstun.TungstunOre;
+import com.Adham.Tungstunmod3.Tungstun.custom.TungstunDrill;
 import com.Adham.Tungstunmod3.TungstunBlocks.TungstunBlock;
 import com.Adham.Tungstunmod3.TungstunEntities.TungstunEntities;
 import com.Adham.Tungstunmod3.TungstunEntities.custom.HotPotato;
@@ -9,14 +10,12 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -25,6 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,6 +38,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 import net.minecraftforge.event.TickEvent;
+import software.bernie.geckolib.animatable.GeoItem;
 
 // The value here should match an entry in the META-IoulnNF/mods.toml file
 @Mod(Tungstunmod3.MOD_ID)
@@ -121,6 +122,7 @@ public class Tungstunmod3
             event.accept(TungstunOre.TUNGSTUN_SHOVEL.get());
             event.accept(TungstunOre.TUNGSTUN_AXE.get());
             event.accept(TungstunOre.TUNGSTUN_PICKAXE.get());
+            event.accept(TungstunOre.TUNGSTUN_DRILL.get());
         }
     }
 
@@ -147,32 +149,62 @@ public class Tungstunmod3
                     pContext -> new ThrownItemRenderer<HotPotato>(pContext, 1.0f, true));
         }
     }
+
+
+
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-    public static class ServerModEvents{
+    public static class ServerModEvents {
+        private static boolean wasMining = false;
+        private static int miningTimer = 0;
+
         @SubscribeEvent
         public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
             if (event.phase == TickEvent.Phase.END) {
-               net.minecraft.world.entity.player.Player player = event.player;
+                net.minecraft.world.entity.player.Player player = event.player;
 
-                boolean helmetOn =  player.getItemBySlot(EquipmentSlot.HEAD).is(TungstunOre.TUNGSTUN_HELMET.get()) ||
+                boolean helmetOn = player.getItemBySlot(EquipmentSlot.HEAD).is(TungstunOre.TUNGSTUN_HELMET.get()) ||
                         player.getItemBySlot(EquipmentSlot.HEAD).is(TungstunOre.CRY_HELMET.get());
-
-                boolean chestOn =  player.getItemBySlot(EquipmentSlot.CHEST).is(TungstunOre.TUNGSTUN_CHESTPLATE.get()) ||
+                boolean chestOn = player.getItemBySlot(EquipmentSlot.CHEST).is(TungstunOre.TUNGSTUN_CHESTPLATE.get()) ||
                         player.getItemBySlot(EquipmentSlot.CHEST).is(TungstunOre.CRY_CHESTPLATE.get());
-
-                boolean legOn =  player.getItemBySlot(EquipmentSlot.LEGS).is(TungstunOre.TUNGSTUN_LEGGINGS.get()) ||
+                boolean legOn = player.getItemBySlot(EquipmentSlot.LEGS).is(TungstunOre.TUNGSTUN_LEGGINGS.get()) ||
                         player.getItemBySlot(EquipmentSlot.LEGS).is(TungstunOre.CRY_LEGGINGS.get());
-
-                boolean bootsOn =  player.getItemBySlot(EquipmentSlot.FEET).is(TungstunOre.TUNGSTUN_BOOTS.get()) ||
+                boolean bootsOn = player.getItemBySlot(EquipmentSlot.FEET).is(TungstunOre.TUNGSTUN_BOOTS.get()) ||
                         player.getItemBySlot(EquipmentSlot.FEET).is(TungstunOre.CRY_BOOTS.get());
 
-                if (helmetOn && chestOn && legOn && bootsOn){
-                    player.addEffect(new MobEffectInstance(
-                            MobEffects.DAMAGE_RESISTANCE, 40, 1,false,false
-                    ));
-                    player.addEffect(new MobEffectInstance(
-                            MobEffects.FIRE_RESISTANCE, 40, 0,false,false
-                    ));
+                if (helmetOn && chestOn && legOn && bootsOn) {
+                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, 1, false, false));
+                    player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 40, 0, false, false));
+                }
+
+                if (player instanceof ServerPlayer serverPlayer) {
+                    ItemStack stack = player.getMainHandItem();
+                    if (stack.getItem() instanceof TungstunDrill drill) {
+                        if (miningTimer > 0) {
+                            miningTimer--;
+                        } else if (wasMining) {
+                            wasMining = false;
+                            drill.triggerAnim(serverPlayer, GeoItem.getOrAssignId(stack, serverPlayer.serverLevel()),
+                                    "drill_controller", "stop");
+                        }
+                    } else {
+                        wasMining = false;
+                        miningTimer = 0;
+                    }
+                }
+            }
+        }
+
+        @SubscribeEvent
+        public static void onBlockBreak(net.minecraftforge.event.level.BlockEvent.BreakEvent event) {
+            if (event.getPlayer() instanceof ServerPlayer player) {
+                ItemStack stack = player.getMainHandItem();
+                if (stack.getItem() instanceof TungstunDrill drill) {
+                    miningTimer = 2;
+                    if (!wasMining) {
+                        wasMining = true;
+                        drill.triggerAnim(player, GeoItem.getOrAssignId(stack, player.serverLevel()),
+                                "drill_controller", "drill");
+                    }
                 }
             }
         }

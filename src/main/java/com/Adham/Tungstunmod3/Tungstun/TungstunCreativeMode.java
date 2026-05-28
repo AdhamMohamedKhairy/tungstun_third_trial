@@ -48,6 +48,7 @@ public class TungstunCreativeMode {
                         output.accept(TungstunOre.TUNGSTUN_SWORD.get());
                         output.accept(TungstunOre.TUNGSTUN_AXE.get());
                         output.accept(TungstunOre.TUNGSTUN_PICKAXE.get());
+                        output.accept(TungstunOre.TUNGSTUN_DRILL.get());
                     }).build());
 
     public static void register(IEventBus eventBus){
