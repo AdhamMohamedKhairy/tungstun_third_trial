@@ -107,6 +107,10 @@ public class Tungstunmod3
             event.accept(TungstunOre.TUNGSTUN_CHESTPLATE.get());
             event.accept(TungstunOre.TUNGSTUN_HELMET.get());
             event.accept(TungstunOre.TUNGSTUN_LEGGINGS.get());
+            event.accept(TungstunOre.CRY_BOOTS.get());
+            event.accept(TungstunOre.CRY_CHESTPLATE.get());
+            event.accept(TungstunOre.CRY_HELMET.get());
+            event.accept(TungstunOre.CRY_LEGGINGS.get());
             event.accept(TungstunOre.CRYSTALLIZED_NETHERITE_SWORD.get());
             event.accept(TungstunOre.TUNGSTUN_SWORD.get());
         }
