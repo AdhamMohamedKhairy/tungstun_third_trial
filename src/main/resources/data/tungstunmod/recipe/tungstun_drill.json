@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " T ",
+    "TTT",
+    " C "
+  ],
+  "key": {
+    "T": { "item": "tungstunmod:tungstunblock" },
+    "C": { "item": "minecraft:shield" }
+  },
+  "result": {
+    "id": "tungstunmod:tungstun_drill",
+    "count": 1
+  }
+}
