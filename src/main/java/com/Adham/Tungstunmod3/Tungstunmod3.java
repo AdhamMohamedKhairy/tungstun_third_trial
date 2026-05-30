@@ -40,7 +40,7 @@ import org.slf4j.Logger;
 import net.minecraftforge.event.TickEvent;
 import software.bernie.geckolib.animatable.GeoItem;
 
-// The value here should match an entry in the META-IoulnNF/mods.toml file
+// Hello
 @Mod(Tungstunmod3.MOD_ID)
 public class Tungstunmod3
 {
